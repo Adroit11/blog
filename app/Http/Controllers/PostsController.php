@@ -6,53 +6,55 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\posts;
+use App\Post;
 
 class PostsController extends Controller
 {
     public function index()
     {
-        $posts = App\posts::all();
-        return Response::json($posts);
+        $posts = Post::all();
+        return \Response::json($posts);
     }
 
-    public function store(Request $request)
-    {
-        //TODO validation
-        
-        $post = new App\posts;
-        $post->author = $request->author;
-        $post->title = $request->title;
-        $post->text = $request->text;
-        $post->url = $request->url;
+    public function store(StorePostRequest $request)
+    { 
+        // $post = new App\Post;
+        // $post->author = $request->author;
+        // $post->title = $request->title;
+        // $post->text = $request->text;
+        // $post->url = $request->url;
 
-        $post->save();
+        // $post->save();
 
-        return Response::json(['success' => true]);
+        // return \Response::json(['success' => true]);
+
+        $post = Post::create($request->only('author', 'title', 'text', 'url'));
+
+        return response()->json($post, 200);
     }
 
 
     //[GET]postbyID
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $post = App\posts::findOrFail($request->id);
+        $post = Post::findOrFail($id);
 
-        return Response::json($post);
+        return \Response::json($post);
     }
 
     public function update(Request $request)
     {
-        $post = App\posts::findOrFail(request-id);
+        $post = Post::findOrFail($request-id);
 
         $post->title = $request->title;
         $post->text = $request->text;
         $post->url = $request->url;
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        App\posts::destroy($request->id);
+        App\posts::destroy($id);
 
-        return Response::json(['success' => true]);
+        return \Response::json(['success' => true]);
     }
 }
