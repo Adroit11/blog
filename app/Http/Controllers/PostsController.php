@@ -2,33 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
 use App\Post;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Requests\StorePostRequest;
+use App\Repositories\PostRepository;
+
 
 class PostsController extends Controller
 {
+    //the post repo instance
+    protected $posts;
+
+    //create new controller instance of our repo
+    public function __construct(PostRepository $posts)
+    {
+        //$this->middleware('auth');
+        $this->posts = $posts;
+    }
+
     public function index()
     {
-        $posts = Post::all();
-        return \Response::json($posts);
+        return \Response::json($this->posts->allPosts());
+    }
+
+    public function show($id)
+    {
+        return \Response::json($this->posts->postById($id));
     }
 
     public function store(StorePostRequest $request)
     { 
-        // $post = new App\Post;
-        // $post->author = $request->author;
-        // $post->title = $request->title;
-        // $post->text = $request->text;
-        // $post->url = $request->url;
 
-        // $post->save();
-
-        // return \Response::json(['success' => true]);
-
-        $post = Post::create($request->only('author', 'title', 'text', 'url'));
+        $post = Post::create($request->only('title', 'text', 'url'));
 
         return response()->json($post, 200);
     }
@@ -42,7 +48,7 @@ class PostsController extends Controller
         return \Response::json($post);
     }
 
-    public function update(Request $request)
+    public function update(UpdatePostRequest $request)
     {
         $post = Post::findOrFail($request-id);
 

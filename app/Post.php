@@ -8,8 +8,13 @@ class Post extends Model
 {
     protected $table = 'posts';
     protected $fillable = [
-        'author', 'title', 'text', 'url'
+        'title', 'text', 'url'
     ];
+
+    public function user() 
+    {
+        return $this->belongsTo('App\User', 'author');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

@@ -25,7 +25,6 @@ class StorePostRequest extends Request
     {
         return [
             //
-            'author' => 'required|string',
             'title' => 'required|string',
             'text' => 'required|string',
             'url' => 'required|url'
