@@ -12,8 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::resource('posts', 'PostsController', 
+Route::resource('/api/posts', 'PostsController', 
     ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
+
+// App::missing(function($exception)
+// {
+//     return File::get(public_path() . '/home.php');
+// });
