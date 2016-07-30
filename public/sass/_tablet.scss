@@ -1,10 +1,58 @@
 /* HEADER */
 header {
-    // h1, h2 {
-    //     display: block;
-    // }
+    width: 100%;
+    margin: 0 auto;
+    display: block;
 
+    h1, h2 {
+        display: block;
+        text-align: center;
+    }
 }
-header .logo img {
-    width: auto;
+
+header .logo {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    img {
+        display: block;
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+/* NAV */
+nav {
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+    clear: right;
+    padding-top: .6em;
+
+    ul {
+        // float: left;
+        display: block;
+        text-align: center;
+        // margin: 0 auto;
+    }
+
+    /*main menu items float side by side*/
+	ul li {
+		// float: left;
+        display: inline-block;
+	}
+
+    ul li a {
+        display: block;
+        color: $menu_colour;
+        // text-align: center;
+        border-top: solid 2px rgba(0,0,0,0.1);
+        font-size: 1.1em;
+        padding: .7em .9em;
+        visibility: visible;
+    }
+
+    ul li a:hover {background-color: rgba(0,0,0,0.1)}
+    ul li.active a {border-top: solid 3px $menu_colour;}
 }

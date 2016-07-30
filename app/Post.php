@@ -13,7 +13,7 @@ class Post extends Model
 
     public function user() 
     {
-        return $this->belongsTo('App\User', 'author');
+        return $this->belongsTo('App\User', 'name', 'author');
     }
 
     /**
