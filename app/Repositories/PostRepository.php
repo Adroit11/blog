@@ -10,7 +10,8 @@ class PostRepository
 	//get all posts
 	public function allPosts()
 	{
-		return Post::all();
+		//return Post::all();
+		return Post::with('user')->get();
 	}
 
 	//insert post

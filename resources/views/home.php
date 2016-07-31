@@ -58,7 +58,7 @@
 		<div ng-repeat="post in posts">
 			{{ post.title }} <br />
 			{{ post.text }} <br />
-			{{ post.author }} <br />
+			{{ post.user.name }} <br />
 			{{ post.url }} <br />
 		</div>
 
