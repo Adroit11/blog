@@ -1,15 +1,14 @@
 (function() {
 	'use strict';
-	app.controller('postsController', ['$scope', '$http', 'API_URL', function($scope, $http, API_URL) {
+	app.controller('postsController', ['$scope', 'PostService', function($scope, PostService) {
+		$scope.message = "Posts";
+		$scope.loading = true;
 		//retrieve posts from API
-		$scope.message = "angular is working";
-		$http.get(API_URL + '/posts')
-			.then(function successCallback(response) {
-				$scope.posts = response.data;
-				$scope.message = "success";
-			}, function errorCallback(response) {
-
-			});
+		var query = PostService.query();
+		query.$promise.then(function(data) {
+			$scope.loading = false;
+			$scope.posts = data;
+		})
 	}]);
 
 })();

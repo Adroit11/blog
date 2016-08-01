@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="blog">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title>Music Blog</title>
 
-		<script
-			  src="https://code.jquery.com/jquery-3.1.0.min.js"
-			  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
-			  crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
 		<!-- FONTS -->
 		<link href='https://fonts.googleapis.com/css?family=Bungee+Inline|Harmattan' rel='stylesheet' type='text/css'>
 
 		<!-- load boostrap css -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet"> -->
 
 		<!-- STYLES -->
 		<link href="<?= asset('css/styles.css') ?>" rel="stylesheet">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,7 +31,7 @@
 		});
 		</script>
 	</head>
-	<body ng-controller="postsController">
+	<body ng-app="blog">
 		<header class="clearfix">
 			<div class="logo">
 				<img ng-src="img/logo.png" />
@@ -41,36 +40,32 @@
 			</div>
 			<nav>
 				<ul class="primary-nav">
-					<li><a href="#">about</a></li>
-					<li><a href="#">posts</a></li>
-					<li><a href="#">contact</a></li>
+					<li><a href="#/">posts</a></li>
+					<li><a href="#/about">about</a></li>
+					<li><a href="#/contact">contact</a></li>
 				</ul>
 				<button class="nav-button">Toggle Navigation</button>
 			</nav>
 		</header>
-		<main>
 
-		</main>
+		<main ng-view></main>
+
 		<footer>
 
 		</footer>
-		<h2>Posts -- {{ message }}</h2>
-		<div ng-repeat="post in posts">
-			{{ post.title }} <br />
-			{{ post.text }} <br />
-			{{ post.user.name }} <br />
-			{{ post.url }} <br />
-		</div>
-
-
 		<!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
         <script src="<?= asset('app/lib/angular/angular.min.js') ?>"></script>
-        <script src="<?= asset('js/jquery-3.1.0.min.js') ?>"></script>
+		<script src="<?= asset('app/lib/angular/angular-resource.min.js') ?>"></script>
+		<script src="<?= asset('app/lib/angular/angular-route.min.js') ?>"></script>
+		<script src="<?= asset('js/jquery-3.1.0.min.js') ?>"></script>
         <!-- <script src="<?= asset('js/bootstrap.min.js') ?>"></script> -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
+		<script src="<?= asset('app/services/postService.js') ?>"></script>
         <script src="<?= asset('app/controllers/posts.js') ?>"></script>
+		
 
 	</body>
 </html>
