@@ -57,6 +57,7 @@
         <script src="<?= asset('app/lib/angular/angular.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/angular/angular-resource.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/angular/angular-route.min.js') ?>"></script>
+		<script src="<?= asset('app/lib/satellizer.min.js') ?>"></script>
 		<script src="<?= asset('js/jquery-3.1.0.min.js') ?>"></script>
         <!-- <script src="<?= asset('js/bootstrap.min.js') ?>"></script> -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -64,7 +65,8 @@
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
 		<script src="<?= asset('app/services/postService.js') ?>"></script>
-        <script src="<?= asset('app/controllers/posts.js') ?>"></script>
+		<script src="<?= asset('app/controllers/authController.js') ?>"></script>
+        <script src="<?= asset('app/controllers/postsController.js') ?>"></script>
 		
 
 	</body>

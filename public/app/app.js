@@ -1,4 +1,4 @@
-var app = angular.module('blog', ['ngResource', 'ngRoute']);
+var app = angular.module('blog', ['ngResource', 'ngRoute', 'satellizer']);
 
 app.constant('API_URL', 'http://localhost:8000/api');
 
@@ -9,25 +9,32 @@ app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
 	}
 }]);
 
-app.config(['$routeProvider', function($routeProvider) {
-		$routeProvider
-			.when('/', {
-				templateUrl: 'app/views/Posts.html',
-				controller: 'postsController'
-			})
-			// .when('/post/:id', {
-			// 	templateUrl: 'views/Post.html',
-			// 	controller: 'controllers/posts.js'
-			// })
-			.when('/about', {
-				templateUrl: 'app/views/About.html',
-				// controller: 'controllers/about.js'
-			})
-			.when('/contact', {
-				templateUrl: 'app/views/Contact.html',
-				// controller: 'controllers/about.js'
-			})
-			.otherwise({
-				redirectTo: '/'
-			});
+app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
+	$authProvider.loginUrl = '/authenticate';
+
+	$routeProvider
+		.when('/', {
+			templateUrl: 'app/views/Posts.html',
+			controller: 'postsController'
+		})
+		// .when('/post/:id', {
+		// 	templateUrl: 'views/Post.html',
+		// 	controller: 'controllers/posts.js'
+		// })
+		.when('/about', {
+			templateUrl: 'app/views/About.html',
+			// controller: 'controllers/about.js'
+		})
+		.when('/contact', {
+			templateUrl: 'app/views/Contact.html',
+			// controller: 'controllers/about.js'
+		})
+		.when('/login', {
+			templateUrl: 'app/views/Login.html',
+			controller: 'authController'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
+
 }]);
