@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/api/posts', 'PostsController', 
-    ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
+Route::group(['prefix' => 'api'], function()
+{
+    Route::resource('posts', 'PostsController', 
+        ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 
-// App::missing(function($exception)
-// {
-//     return File::get(public_path() . '/home.php');
-// });
+    Route::post('login', 'PostsController@login');
+});

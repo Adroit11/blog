@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\User;
 use App\Post;
 
-class PostRepository
+class Repository
 {
 	//get all posts
 	public function allPosts()
@@ -14,10 +14,23 @@ class PostRepository
 		return Post::with('user')->get();
 	}
 
+	//get post by ID
+	public function postById($id)
+	{
+		return Post::with('user')->find($id);
+	}
+
 	//insert post
 	public function insertPost($data)
 	{
-		Post::create($data);
+		$post = new Post();
+		$post->title = $data->title;
+		$post->text = $data->text;
+		$post->url = $data->url;
+
+		// Post::create($data);
+		$user = User::findOrFail($data->$userID);
+		return $user->posts()->save($post);
 	}
 
 	//get posts by userID
@@ -28,12 +41,6 @@ class PostRepository
 		return $user->posts()
 					->orderBy('created_at', 'asc')
 					->get();
-	}
-
-	//get post by ID
-	public function postById($id)
-	{
-		return Post::findOrFail($id);
 	}
 
 	//update post

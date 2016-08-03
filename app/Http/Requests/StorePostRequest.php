@@ -13,7 +13,8 @@ class StorePostRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        // return false;
+        return true;
     }
 
     /**

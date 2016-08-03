@@ -1,13 +1,15 @@
 (function() {
 	'use strict';
-	app.controller('postsController', ['$scope', 'PostService', function($scope, PostService) {
-		$scope.message = "Posts";
-		$scope.loading = true;
+	app.controller('postsController', ['PostService', function(PostService) {
+		vm = this;
+
+		vm.message = "Posts";
+		vm.loading = true;
 		//retrieve posts from API
 		var query = PostService.query();
 		query.$promise.then(function(data) {
-			$scope.loading = false;
-			$scope.posts = data;
+			vm.loading = false;
+			vm.posts = data;
 		})
 	}]);
 

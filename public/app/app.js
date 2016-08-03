@@ -9,13 +9,14 @@ app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
 	}
 }]);
 
-app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
-	$authProvider.loginUrl = '/authenticate';
+app.config(['API_URL', '$routeProvider', '$authProvider', function(API_URL, $routeProvider, $authProvider) {
+	$authProvider.loginUrl = API_URL + '/login';
 
 	$routeProvider
 		.when('/', {
 			templateUrl: 'app/views/Posts.html',
-			controller: 'postsController'
+			controller: 'postsController',
+			controllerAs: 'vm'
 		})
 		// .when('/post/:id', {
 		// 	templateUrl: 'views/Post.html',
@@ -31,7 +32,8 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
 		})
 		.when('/login', {
 			templateUrl: 'app/views/Login.html',
-			controller: 'authController'
+			controller: 'authController',
+			controllerAs: 'vm'
 		})
 		.otherwise({
 			redirectTo: '/'

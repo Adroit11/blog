@@ -7,10 +7,10 @@
     {{ post.url }} <br />
 </div>-->
 <div class="row ">
-    <input type="text" ng-model="srch" placeholder="Search" class="col-xs-6 col-xs-offset-3"/>
+    <input type="text" ng-model="vm.srch" placeholder="Search" class="col-xs-6 col-xs-offset-3"/>
 </div>
 <div class="row">
-    <div ng-repeat="post in posts | filter: srch" class="col-md-4 panel panel-default" style="margin: 1%">
+    <div ng-repeat="post in vm.posts | filter: vm.srch" class="col-md-4 panel panel-default" style="margin: 1%">
         <div class="panel-heading">
             <h3> {{ post.title }} </h3>
             <h4 style="float: right;"> {{ post.user.name }} </h4> 
