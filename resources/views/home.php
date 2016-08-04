@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blog">
 	<head>
 		<meta charset="utf-8">
-		<title>Music Blog</title>
+		<title>Digs</title>
 
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
@@ -24,31 +24,15 @@
 
 		<!--mobile menu script -->
 		<script>
-		$(document).ready(function(){
-			$(".nav-button").click(function () {
-				$(".nav-button,.primary-nav").toggleClass("open");
-			});    
-		});
+		// $(document).ready(function(){
+		// 	$(".nav-button").click(function () {
+		// 		$(".nav-button,.primary-nav").toggleClass("open");
+		// 	});    
+		// });
 		</script>
 	</head>
-	<body ng-app="blog">
-		<header class="clearfix">
-			<div class="logo">
-				<img ng-src="img/logo.png" />
-				<h1>MUSIC BLOG</h1>
-				<h2>Purveyors of Wholesome Thug Shit and Progressive Ignorance</h2>
-			</div>
-			<nav>
-				<ul class="primary-nav">
-					<li><a href="#/">posts</a></li>
-					<li><a href="#/about">about</a></li>
-					<li><a href="#/contact">contact</a></li>
-				</ul>
-				<button class="nav-button">Toggle Navigation</button>
-			</nav>
-		</header>
-
-		<main ng-view></main>
+	<body ui-view>
+		<!-- <main ui-view></main> -->
 
 		<footer>
 
@@ -56,7 +40,7 @@
 		<!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
         <script src="<?= asset('app/lib/angular/angular.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/angular/angular-resource.min.js') ?>"></script>
-		<script src="<?= asset('app/lib/angular/angular-route.min.js') ?>"></script>
+		<script src="<?= asset('app/lib/angular/angular-ui-router.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/satellizer.min.js') ?>"></script>
 		<script src="<?= asset('js/jquery-3.1.0.min.js') ?>"></script>
         <!-- <script src="<?= asset('js/bootstrap.min.js') ?>"></script> -->
