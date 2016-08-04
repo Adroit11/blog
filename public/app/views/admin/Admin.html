@@ -1,0 +1,17 @@
+<div class="row">
+    <input type="text" ng-model="vm.srch" placeholder="Search" class="col-xs-6 col-xs-offset-3" />
+</div>
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Author</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="post in vm.posts | filter: vm.srch" class="col-md-4" style="margin: 1%">
+            <td>{{ post.title }} </td>
+            <td> {{ post.user.name }} </td>
+            <td><a ng-href="/edit/{{ post.id }}">EDIT ICON</a></td>
+            <td><a ng-click="deletePost({{ post.id }})">delete ICON</a></td>
+        </tr>
+    </tbody>
+</table>

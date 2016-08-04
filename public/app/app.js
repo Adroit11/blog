@@ -35,6 +35,16 @@ app.config(['API_URL', '$routeProvider', '$authProvider', function(API_URL, $rou
 			controller: 'authController',
 			controllerAs: 'vm'
 		})
+		.when('/admin', {
+			templateUrl: 'app/views/admin/Admin.html',
+			controller: 'adminController',
+			controllerAs: 'vm'
+		})
+		.when('/admin/edit/:id', {
+			templateUrl: 'app/views/admin/edit.html',
+			controller: 'adminController',
+			controllerAs: 'vm'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	app.controller('postsController', ['PostService', function(PostService) {
-		vm = this;
+		var vm = this;
 
 		vm.message = "Posts";
 		vm.loading = true;
