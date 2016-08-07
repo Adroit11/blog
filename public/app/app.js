@@ -1,18 +1,26 @@
-var app = angular.module('blog', ['ngResource', 'ui.router', 'satellizer']);
+var app = angular.module('blog', ['ngResource', 'ui.router', 'satellizer', 'ui.bootstrap']);
 
 app.constant('API_URL', 'http://localhost:8000/api');
 
 //custom filter for urls inside iframes
 app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
-	return function(val) {
+	return function (val) {
 		return $sce.trustAsResourceUrl(val);
 	}
 }]);
 
-app.config(['API_URL', '$stateProvider', '$urlRouteProvider', '$authProvider', function(API_URL, $stateProvider, $urlRouteProvider, $authProvider) {
+//format laravel dates to make angular happy
+app.filter('dateFormat', function(){
+	return function(dateSTR) {
+		var o = dateSTR.replace(/-/g, "/"); // Replaces hyphens with slashes
+		return Date.parse(o + " -0000"); // No TZ subtraction on this sample
+	}
+});
+
+app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', function(API_URL, $stateProvider, $urlRouterProvider, $authProvider) {
 	$authProvider.loginUrl = API_URL + '/login';
 
-	$urlRouteProvider.otherwise('/auth');
+	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
 		.state('user', {
@@ -20,37 +28,43 @@ app.config(['API_URL', '$stateProvider', '$urlRouteProvider', '$authProvider', f
 			templateUrl: 'app/partials/user.html'
 		})
 		.state('user.posts', {
-			url: '/posts',
+			url: 'posts',
 			templateUrl: 'app/partials/user.posts.html',
+			resolve: {
+				PostService: 'PostService',
+
+				posts: function(PostService) {
+					return PostService.query().$promise;
+				}
+			},
 			controller: 'postsController',
 			controllerAs: 'vm'
 		})
 		.state('user.about', {
-			url: '/about',
+			url: 'about',
 			templateUrl: 'app/partials/user.about.html'
 		})
 		.state('user.contact', {
-			url: '/contact',
+			url: 'contact',
 			templateUrl: 'app/partials/user.contact.html',
-			controller: 'contactController',
-			controllerAs: 'vm'
+			// controller: 'contactController',
+			// controllerAs: 'vm'
 		})
 		.state('admin', {
 			url: '/admin',
 			templateUrl: 'app/partials/admin.html',
+			resolve: {
+				PostService: 'PostService',
+
+				posts: function(PostService) {
+					return PostService.query().$promise;
+				}
+			},
 			controller: 'adminController',
 			controllerAs: 'vm'
 		})
-		.state('admin.create', {
-			url: '/admin/create',
-			templateUrl: 'app/partials/admin.create.html'
-		})
-		.state('admin.edit', {
-			url: '/admin/edit/:id',
-			templateUrl: 'app/partials/admin.edit.html'
-		})
 		.state('auth', {
-			url: 'login',
+			url: '/login',
 			templateUrl: 'app/partials/login.html',
 			controller: 'authController as vm'
 		});

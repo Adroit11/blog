@@ -22,14 +22,14 @@ class Repository
 
 	//insert post
 	public function insertPost($data)
-	{
+	{		
 		$post = new Post();
+		$user = User::findOrFail($data->userID);
+
 		$post->title = $data->title;
 		$post->text = $data->text;
 		$post->url = $data->url;
-
-		// Post::create($data);
-		$user = User::findOrFail($data->$userID);
+		
 		return $user->posts()->save($post);
 	}
 

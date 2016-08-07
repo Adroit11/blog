@@ -1,20 +1,21 @@
-(function() {
+(function () {
     'use strict';
-    app.controller('authController', ['$auth', function ($auth){
+    app.controller('authController', ['$auth', '$state', 'AuthService', function ($auth, $state, AuthService) {
         var vm = this;
-        vm.message = "Hello";
-        vm.login = function() {
+        vm.login = function () {
             var credentials = {
                 email: vm.email,
                 password: vm.password
             };
 
-            //use satellizer's auth service to login
-            $auth.login(credentials).then(function(data){
-                //if login successful, go to admin page
-                vm.message = "success";
-                console.log(data.data);
-            });       
+            AuthService.login(credentials).then(function (data) {
+                console.log(data);
+                //authenticated, user data in localstorage and rootScope
+                $state.go('admin');
+            }, function() {
+                vm.message = "INVALID";
+                
+            });
         }
     }]);
 })();

@@ -28,7 +28,8 @@ class StorePostRequest extends Request
             //
             'title' => 'required|string',
             'text' => 'required|string',
-            'url' => 'required|url'
+            'url' => 'required|url',
+            //'userID' => 'required|integer'
         ];
     }
 }

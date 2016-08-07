@@ -21,4 +21,5 @@ Route::group(['prefix' => 'api'], function()
         ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 
     Route::post('login', 'PostsController@login');
+    Route::get('user', 'PostsController@getAuthenticatedUser');
 });

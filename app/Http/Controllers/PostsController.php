@@ -14,12 +14,16 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class PostsController extends Controller
 {
+    
     //the post repo instance
     protected $posts;
 
     //create new controller instance of our repo
     public function __construct(Repository $repo)
     {
+                //weird xdebug problem 
+        ini_set('xdebug.max_nesting_level', 110);
+
         //$this->middleware('auth');
         $this->middleware('jwt.auth', ['except' => ['index', 'show', 'login']]);
         $this->repo = $repo;
@@ -38,7 +42,7 @@ class PostsController extends Controller
     }
 
     //POST /posts
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     { 
         return \Response::json($this->repo->insertPost($request));
 
@@ -82,4 +86,23 @@ class PostsController extends Controller
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
     }
+
+    //GET /user
+    public function getAuthenticatedUser()
+    {
+        try {
+            if (! $user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+            return response()->json(['token_expired'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+            return response()->json(['token_absent'], $e->getStatusCode());
+        }
+        // the token is valid and we have found the user via the sub claim
+        return response()->json(compact('user'));
+    }
+    
 }
