@@ -51,8 +51,9 @@ class PostsController extends Controller
     }
 
     //PUT/PATCH /posts/:id
-    public function update(UpdatePostRequest $request)
+    public function update($id, Request $request)
     {
+        return \Response::json($this->repo->updatePost($id, $request));
         // $post = Post::findOrFail($request->id);
 
         // $post->title = $request->title;
@@ -63,9 +64,7 @@ class PostsController extends Controller
     //DELETE /posts/:id
     public function destroy($id)
     {
-        App\posts::destroy($id);
-
-        return \Response::json(['success' => true]);
+        return \Response::json($this->repo->deletePost($id));
     }
 
     //POST /login

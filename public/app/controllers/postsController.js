@@ -3,7 +3,7 @@
 	app.controller('postsController', ['posts', function(posts) {
 		var vm = this;
 
-		console.log(posts);
+		//console.log(posts);
 		vm.posts = posts;
 		vm.message = "Posts";	
 		

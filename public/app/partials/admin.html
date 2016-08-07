@@ -19,8 +19,8 @@
                 <td>{{ post.title }} </td>
                 <td> {{ post.user.name }} </td>
                 <td> {{ post.created_at | dateFormat | date: "short" }}</td>
-                <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
-                <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                <td><a ng-click="vm.open('Edit', post)"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td><a ng-click="vm.open('Delete', post)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
         </tbody>
     </table>

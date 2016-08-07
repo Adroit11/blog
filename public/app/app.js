@@ -17,7 +17,34 @@ app.filter('dateFormat', function () {
 	}
 });
 
-app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', function (API_URL, $stateProvider, $urlRouterProvider, $authProvider) {
+app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', '$httpProvider', '$provide', function (API_URL, $stateProvider, $urlRouterProvider, $authProvider, $httpProvider, $provide) {
+	function redirectWhenLoggedOut ($q, $injector) {
+        return {
+            responseError: function (rejection) {
+                //use $injector to get $state, to avoid a circular dependency error
+                var $state = $injector.get('$state');
+
+                //status code 400 could be used for other reasons by Laravel, check for specific rejection reasons instead
+                var rejectionReasons = ['token_not_provided', 'token_expired', 'token_absent', 'token_invalid'];
+
+                angular.forEach(rejectionReasons, function(value, key){
+                    //redirect to login state if rejection reason encountered
+                    if(rejection.data.error === value) {
+                        localStorage.removeItem('user');
+                        $state.go('auth');
+                    }
+                });
+
+				return $q.reject(rejection);
+            }
+        }
+
+    }
+
+	$provide.factory('redirectWhenLoggedOut', redirectWhenLoggedOut);
+
+	$httpProvider.interceptors.push('redirectWhenLoggedOut');
+	
 	$authProvider.loginUrl = API_URL + '/login';
 
 	$urlRouterProvider.otherwise('/');

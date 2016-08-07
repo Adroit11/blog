@@ -24,7 +24,7 @@ class Repository
 	public function insertPost($data)
 	{		
 		$post = new Post();
-		$user = User::findOrFail($data->userID);
+		$user = User::findOrFail($data->author);
 
 		$post->title = $data->title;
 		$post->text = $data->text;
@@ -44,9 +44,15 @@ class Repository
 	}
 
 	//update post
-	public function updatePost($data, $id)
+	public function updatePost($id, $data)
 	{
-		return Post::findOrFail($id)->update($data);
+		$post = Post::findOrFail($id);
+
+		$post->title = $data->title;
+		$post->text = $data->text;
+		$post->url = $data->url;
+
+		return $post->save();
 	}
 
 	//delete post

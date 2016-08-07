@@ -1,7 +1,13 @@
 (function () {
     'use strict';
     app.factory('PostService', ['$resource', 'API_URL', function ($resource, API_URL) {
-        return $resource(API_URL + '/posts/:id', { id: "@id" });
+        return $resource(API_URL + '/posts/:id', null,
+            {
+                'query': { method: 'GET', params: { id: '@id' }, isArray: true },
+                'post': { method: 'POST' },
+                'update': { method: 'PUT', params: { id: '@id' } },
+                'remove': { method: 'DELETE', params: { id: '@id' } }
+            });
     }]);
 
     app.factory('UserService', ['$http', 'API_URL', function ($http, API_URL) {
@@ -20,9 +26,6 @@
                 //console.log('success');
                 return UserService.getUserData();
             }, function (error) {
-                // vm.message = "Invalid Credentials. Please try again."
-                // // console.log(response);
-                // return "Error: " + response.data;
                 throw error.data;
             }).then(function (response) {
                 //returned user data
