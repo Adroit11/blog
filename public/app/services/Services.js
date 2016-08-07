@@ -19,10 +19,11 @@
                 //if login successful, get user data
                 //console.log('success');
                 return UserService.getUserData();
-            }, function error(response) {
+            }, function (error) {
                 // vm.message = "Invalid Credentials. Please try again."
-                // console.log(response);
-                return "Error: " + response.data;
+                // // console.log(response);
+                // return "Error: " + response.data;
+                throw error.data;
             }).then(function (response) {
                 //returned user data
 
@@ -33,12 +34,13 @@
                 //set user's state and data on $rootScope to allow access across the app
                 $rootScope.authenticated = true;
                 $rootScope.currentUser = response.data.user;
-
+            }, function (error) {
+                throw error.data;
             });
         }
 
         function logout() {
-            return $auth.logout().then(function(){
+            return $auth.logout().then(function () {
                 //remove from local storage
                 localStorage.removeItem('user');
                 //set authenticated to false

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    app.controller('authController', ['$auth', '$state', 'AuthService', function ($auth, $state, AuthService) {
+    app.controller('authController', ['$state', 'AuthService', function ($state, AuthService) {
         var vm = this;
         vm.login = function () {
             var credentials = {
@@ -9,13 +9,15 @@
             };
 
             AuthService.login(credentials).then(function (data) {
-                console.log(data);
+                //console.log(data);
                 //authenticated, user data in localstorage and rootScope
                 $state.go('admin');
-            }, function() {
-                vm.message = "INVALID";
-                
+            }, function (error) {
+                vm.message = "Invalid Credentials. Please try again.";
+                //log the error
+                //console.log(error.data); 
             });
+
         }
     }]);
 })();

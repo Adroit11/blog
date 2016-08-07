@@ -10,14 +10,14 @@ app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
 }]);
 
 //format laravel dates to make angular happy
-app.filter('dateFormat', function(){
-	return function(dateSTR) {
+app.filter('dateFormat', function () {
+	return function (dateSTR) {
 		var o = dateSTR.replace(/-/g, "/"); // Replaces hyphens with slashes
 		return Date.parse(o + " -0000"); // No TZ subtraction on this sample
 	}
 });
 
-app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', function(API_URL, $stateProvider, $urlRouterProvider, $authProvider) {
+app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', function (API_URL, $stateProvider, $urlRouterProvider, $authProvider) {
 	$authProvider.loginUrl = API_URL + '/login';
 
 	$urlRouterProvider.otherwise('/');
@@ -33,7 +33,7 @@ app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', 
 			resolve: {
 				PostService: 'PostService',
 
-				posts: function(PostService) {
+				posts: function (PostService) {
 					return PostService.query().$promise;
 				}
 			},
@@ -56,7 +56,7 @@ app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', 
 			resolve: {
 				PostService: 'PostService',
 
-				posts: function(PostService) {
+				posts: function (PostService) {
 					return PostService.query().$promise;
 				}
 			},
@@ -69,4 +69,24 @@ app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', 
 			controller: 'authController as vm'
 		});
 
+}]);
+
+app.run(['$rootScope', '$state', function ($rootScope, $state) {
+
+	//event fires whenever state changes
+	$rootScope.$on('$stateChangeStart', function (event, toState) {
+		var user = JSON.parse(localStorage.getItem('user'));
+
+		if (user) {
+
+			$rootScope.authenticated = true;
+
+			$rootScope.currentUser = user;
+
+			if (toState.name === 'auth') {
+				event.preventDefault();
+				$state.go('admin');
+			}
+		}
+	});
 }]);
