@@ -1,24 +1,26 @@
-<form id="loginForm" name="loginForm" ng-submit="vm.login(loginForm.$valid)" class="form-horizontal col-sm-offset-3 col-sm-6"
-    novalidate>
-    <div class="form-group">
-        <a ui-sref="user"><img ng-src="img/logo.png" /></a>
-        {{vm.message}}
-    </div>
-    <div class="form-group">
-        <label for="txtEmail" class="control-label col-sm-3">Email:</label>
-        <div class="col-sm-9">
-            <input type="email" id="txtEmail" ng-model="vm.email" class="form-control" required />
+<div id="loginContainer">
+    <form id="loginForm" name="loginForm" ng-submit="vm.login(loginForm.$valid)" class="form-horizontal col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-4 col-md-4"
+        novalidate>
+        <div class="form-group">
+            <a ui-sref="user" class="col-xs-4 col-xs-offset-4 logo"><img ng-src="img/SoundCloud_logo.png"  /></a>
+            {{vm.message}}
         </div>
-    </div>
-    <div class="form-group">
-        <label for="txtPassword" class="control-label col-sm-3">Password:</label>
-        <div class="col-sm-9">
-            <input type="password" id="txtPassword" ng-model="vm.password" class="form-control" required />
+        <div class="form-group">
+            <label for="txtEmail" class="control-label col-sm-3">Email:</label>
+            <div class="col-sm-9">
+                <input type="email" id="txtEmail" ng-model="vm.email" class="form-control" required />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9">
-            <button type="submit" class="btn btn-default">Sign In</button>
+        <div class="form-group">
+            <label for="txtPassword" class="control-label col-sm-3">Password:</label>
+            <div class="col-sm-9">
+                <input type="password" id="txtPassword" ng-model="vm.password" class="form-control" required />
+            </div>
         </div>
-    </div>
-</form>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default">Sign In</button>
+            </div>
+        </div>
+    </form>
+</div>
