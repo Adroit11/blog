@@ -68,17 +68,27 @@ nav {
 //login form
 #loginContainer  {
     
-    min-height: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    // min-height: 100%;
+    // min-height: 100vh;
+    // display: flex;
+    // align-items: center;
+
+    margin-top: 15%;
 
     .control-label {
-        font-size: 1.25rem;
+        font-weight: bold;
     }
 }
 
 .logo img {
     padding-bottom: $gutter;
-    max-width: 150px;
+    max-width: 125px;
+}
+
+.btn-default {
+    color: white;
+    background-color: $blue;
+    border-color: $blue;
+    float: right;
+
 }
