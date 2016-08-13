@@ -17,14 +17,14 @@ html {-webkit-text-size-adjust: none; }
 body {
     font-size: 100%;
     font-family: $default_font_family;
-    background-color: $dkgrey;
-    color: $ltrgrey;
+    background-color: $bg-color;
+    color: $text-color;
 }
 
 /* HEADER */
 header {
     
-    padding: 1em $gutter .5em $gutter;
+    // padding: 1em $gutter .5em $gutter;
 
     h1, h2 {
         display: none;
@@ -41,54 +41,71 @@ header {
 }
 
 /* NAV */
-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: $menu_colour;
-    height: 44px;
-    width: 100%;
+.navbar-default {
+    background-color: transparent;
+    border-color: $bg-color;
 
-    ul li a{
-        visibility: hidden;
-        color: $menu_text;
-        text-decoration: none;
-        text-transform: lowercase;
+    .navbar-nav {
+        
+        li a {
+            color: white;
+
+            &:hover, &:focus {
+                color: $orange;
+            }
+        }
+
+        .active {
+            a, a:hover, a:focus {
+                border-bottom: 1px solid $orange;
+                background-color: $bg-color;
+                color: $orange;
+            }
+        } 
+        // .open a, a:hover, a:focus {
+        //     border-bottom: 1px solid red;
+        //     color: white;
+        // } 
+    }
+
+    .navbar-collapse {
+        text-align: center;
     }
 }
-
 
 /* MISC */
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
 //login form
-#loginContainer  {
+#login-container  {
+    margin-top: 7%;
+
+    #logo-login {
+        margin-bottom: 10%;
+    }
     
-    // min-height: 100%;
-    // min-height: 100vh;
-    // display: flex;
-    // align-items: center;
+}
 
-    margin-top: 15%;
+.submit {
+    color: white;
+    background-color: $btn-bg;
+    border: none;
+    float: right;
 
-    .control-label {
-        font-weight: bold;
+    &:hover {
+        @extend .submit;
+        background-color: $btn-bg-hover;
+    }
+
+    &:focus {
+        @extend .submit;
+        outline: none;
+    }
+
+    &:active {
+        @extend .submit;
     }
 }
 
-.logo img {
-    padding-bottom: $gutter;
-    max-width: 125px;
-}
-
-.btn-default {
-    color: white;
-    background-color: $blue;
-    border-color: $blue;
-    float: right;
-
+.error {
+    color: $error-txt;
 }

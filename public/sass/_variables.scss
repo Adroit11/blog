@@ -1,6 +1,8 @@
 /* ---- SCSS FOR COLORS ----- */
 $brown: #a47027;
-$orange: #C5120D;
+$red: #FC1300;
+$ltorange: #ED4E0C;
+$orange: #E82C0C;
 $blue: #394585; 
 $dkgrey: #333439;
 $rlydkgrey: #404352;
@@ -8,14 +10,20 @@ $ltrgrey: #BBBED2;
 $ltgrey: #777985;
 
 
-$text-colour: $dkgrey;
+$text-color: $ltrgrey;
 $menu_text: $orange;
-$menu_colour: $dkgrey;
-$body_colour: $dkgrey;
+$link-hover: $red;
+$menu-active: $rlydkgrey;
+
 $link_colour: $brown;
 $h1_colour: $brown;
 $h2_colour: $orange;
 $h3_colour: $blue;
+
+$bg-color: $dkgrey;
+$error-txt: $red;
+$btn-bg: $ltorange;
+$btn-bg-hover: $orange;
 
 /* ---- SCSS FOR FONT FAMILY ----- */
 $logo_font_family: 'Bungee Inline', cursive;

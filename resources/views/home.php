@@ -10,8 +10,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Bungee+Inline|Harmattan' rel='stylesheet' type='text/css'>
 
 		<!-- load boostrap css -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<!-- <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet"> -->
+		<link href="<?= asset('app/lib/bootstrap/bootstrap.min.css') ?>" rel="stylesheet">
 
 		<!-- STYLES -->
 		<link href="<?= asset('css/styles.css') ?>" rel="stylesheet">
@@ -22,14 +21,6 @@
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 		<![endif]-->
 
-		<!--mobile menu script -->
-		<script>
-		$(document).ready(function(){
-			$(".nav-button").click(function () {
-				$(".nav-button,.primary-nav").toggleClass("open");
-			});    
-		});
-		</script>
 	</head>
 	<body>
 		<div ui-view></div>
@@ -42,7 +33,7 @@
 		<script src="<?= asset('app/lib/angular/angular-touch.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/angular/angular-animate.min.js') ?>"></script>
 		<script src="<?= asset('js/jquery-3.1.0.min.js') ?>"></script>
-        <!-- <script src="<?= asset('js/bootstrap.min.js') ?>"></script> -->
+        <script src="<?= asset('app/lib/bootstrap/bootstrap.min.js') ?>"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="<?= asset('app/lib/ui-bootstrap-tpls-2.0.1.min.js') ?>"></script>
         
