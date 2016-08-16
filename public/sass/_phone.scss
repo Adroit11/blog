@@ -25,10 +25,19 @@ input {
     color: black;
 }
 
+/* clearfix */
+.clearfix-row{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 /* HEADER */
 header {
-    
-    // padding: 1em $gutter .5em $gutter;
 
     h1, h2 {
         display: none;
@@ -36,7 +45,7 @@ header {
 
     .logo {
         font-family: $logo_font_family;
-        float: left;
+        // float: left;
     }
 
     .logo img {
@@ -48,6 +57,11 @@ header {
 .navbar-default {
     background-color: transparent;
     border-color: $bg-color;
+
+    .navbar-toggle, .navbar-toggle:focus, .navbar-toggle:hover {
+        @extend .navbar-default;
+
+    }
 
     .navbar-nav {
         
@@ -61,26 +75,32 @@ header {
 
         .active {
             a, a:hover, a:focus {
-                // border-bottom: 1px solid $orange;
-                text-decoration: underline;
                 background-color: $bg-color;
-                color: $orange;
+                color: white;
             }
         } 
-        // .open a, a:hover, a:focus {
-        //     border-bottom: 1px solid red;
-        //     color: white;
-        // } 
+
     }
 
     .navbar-collapse {
         text-align: center;
+        
     }
 }
 
 /* MISC */
 .search {
     margin-bottom: 25px;
+
+    input {
+        border-radius: 15px;
+        &:focus {
+            outline: none;
+            
+        }
+    }
+
+    
 }
 
 //Posts panels
@@ -92,7 +112,15 @@ header {
     }
     .panel-body {
         background-color: $bg-color;
+
+        p {
+            padding-bottom: 15px;
+        }
     }
+}
+
+.author {
+    font-style: italic;
 }
 
 //login form

@@ -3,14 +3,14 @@
 	app.controller('postsController', ['posts', 'SoundService', function (posts, SoundService) {
 		var vm = this;
 		vm.message = "Posts";
-		vm.limit = 15; //posts per page
+		vm.limit = 3; //posts per page
 		vm.posts = posts;
 
 		//console.log(posts);
 		posts.forEach(parseURL);
 
 		vm.loadMore = function () {
-			var total = vm.limit + 15;
+			var total = vm.limit + 3;
 			vm.limit = total > vm.posts.length ? vm.posts.length : total;
 		}
 
