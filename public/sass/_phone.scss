@@ -57,7 +57,8 @@ header {
 
         .active {
             a, a:hover, a:focus {
-                border-bottom: 1px solid $orange;
+                // border-bottom: 1px solid $orange;
+                text-decoration: underline;
                 background-color: $bg-color;
                 color: $orange;
             }
@@ -74,6 +75,28 @@ header {
 }
 
 /* MISC */
+.search {
+    margin-bottom: 25px;
+}
+
+.input-clear {
+    right: 25px;
+    top: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+//Posts panels
+.panel-default {
+    border: none;
+    .panel-heading {
+        background-color: $bg-color;
+        color: $text-color;
+    }
+    .panel-body {
+        background-color: $bg-color;
+    }
+}
 
 //login form
 #login-container  {

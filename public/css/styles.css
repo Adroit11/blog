@@ -82,13 +82,30 @@ header .logo img {
     .navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus {
       color: #E82C0C; }
   .navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover, .navbar-default .navbar-nav .active a:focus {
-    border-bottom: 1px solid #E82C0C;
+    text-decoration: underline;
     background-color: #333439;
     color: #E82C0C; }
   .navbar-default .navbar-collapse {
     text-align: center; }
 
 /* MISC */
+.search {
+  margin-bottom: 25px; }
+
+.input-clear {
+  right: 25px;
+  top: 8px;
+  position: relative;
+  z-index: 2; }
+
+.panel-default {
+  border: none; }
+  .panel-default .panel-heading {
+    background-color: #333439;
+    color: #BBBED2; }
+  .panel-default .panel-body {
+    background-color: #333439; }
+
 #login-container {
   margin-top: 7%; }
   #login-container #logo-login {
