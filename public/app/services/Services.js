@@ -57,4 +57,14 @@
             logout: logout
         }
     }]);
+
+    app.factory('SoundService', ['$http', function ($http) {
+        return {
+            getUri: function (url) {
+                return $http.get('https://api.soundcloud.com/resolve.json?url=' + url + '&client_id=bd9c31fe049a3f05e0f6871440aa43da');
+                    
+            }
+        }
+
+    }]);
 })();

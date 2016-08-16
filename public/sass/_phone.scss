@@ -21,6 +21,10 @@ body {
     color: $text-color;
 }
 
+input {
+    color: black;
+}
+
 /* HEADER */
 header {
     
@@ -77,13 +81,6 @@ header {
 /* MISC */
 .search {
     margin-bottom: 25px;
-}
-
-.input-clear {
-    right: 25px;
-    top: 8px;
-    position: relative;
-    z-index: 2;
 }
 
 //Posts panels
