@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="blog">
+<html ng-app="blog" lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Digs</title>
 
-		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-
-		<!-- FONTS -->
+		<!-- fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Bungee+Inline|Harmattan' rel='stylesheet' type='text/css'>
-
-		<!-- load boostrap css -->
-		<link href="<?= asset('app/lib/bootstrap/bootstrap.min.css') ?>" rel="stylesheet">
-
-		<!-- STYLES -->
+		<link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet">
+		<link href="<?= asset('css/font-awesome.min.css') ?>" rel="stylesheet">
 		<link href="<?= asset('css/styles.css') ?>" rel="stylesheet">
-		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
+		
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -33,8 +27,7 @@
 		<script src="<?= asset('app/lib/angular/angular-touch.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/angular/angular-animate.min.js') ?>"></script>
 		<script src="<?= asset('js/jquery-3.1.0.min.js') ?>"></script>
-        <script src="<?= asset('app/lib/bootstrap/bootstrap.min.js') ?>"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
 		<script src="<?= asset('app/lib/ui-bootstrap-tpls-2.0.1.min.js') ?>"></script>
         
         <!-- AngularJS Application Scripts -->
