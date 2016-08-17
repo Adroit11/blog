@@ -47,7 +47,7 @@ app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', 
 	
 	$authProvider.loginUrl = API_URL + '/login';
 
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/posts');
 
 	$stateProvider
 		.state('user', {

@@ -25,18 +25,26 @@ input {
     color: black;
 }
 
+/* clearfix */
+.clearfix-row{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 /* HEADER */
 header {
-    
-    // padding: 1em $gutter .5em $gutter;
-
     h1, h2 {
         display: none;
     }
 
     .logo {
         font-family: $logo_font_family;
-        float: left;
+        // float: left;
     }
 
     .logo img {
@@ -49,8 +57,20 @@ header {
     background-color: transparent;
     border-color: $bg-color;
 
+    .navbar-brand {
+        color: white;
+        &:hover, &:focus {
+                color: $orange;
+        }
+
+    }
+
+    .navbar-toggle, .navbar-toggle:focus, .navbar-toggle:hover {
+        @extend .navbar-default;
+
+    }
+
     .navbar-nav {
-        
         li a {
             color: white;
 
@@ -61,26 +81,35 @@ header {
 
         .active {
             a, a:hover, a:focus {
-                // border-bottom: 1px solid $orange;
-                text-decoration: underline;
                 background-color: $bg-color;
-                color: $orange;
+                color: white;
             }
         } 
-        // .open a, a:hover, a:focus {
-        //     border-bottom: 1px solid red;
-        //     color: white;
-        // } 
+
     }
 
     .navbar-collapse {
         text-align: center;
+
+        &.in {
+            border-bottom: 1px solid white;   
+        }
     }
 }
 
 /* MISC */
 .search {
     margin-bottom: 25px;
+
+    input {
+        border-radius: 15px;
+        &:focus {
+            outline: none;
+            
+        }
+    }
+
+    
 }
 
 //Posts panels
@@ -92,15 +121,24 @@ header {
     }
     .panel-body {
         background-color: $bg-color;
+
+        p {
+            padding-bottom: 15px;
+        }
     }
+}
+
+.author {
+    font-style: italic;
 }
 
 //login form
 #login-container  {
     margin-top: 7%;
-
+    
     #logo-login {
         margin-bottom: 10%;
+        max-width: 200px;
     }
     
 }
@@ -128,4 +166,35 @@ header {
 
 .error {
     color: $error-txt;
+}
+
+//ADMIN side 
+.admin-home {
+    max-width: 960px;
+}
+
+.nav-admin {
+    ul {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    li {
+        display: inline-block;
+        padding: 7px;
+    }
+    a:hover {
+        color: $orange;
+        text-decoration: none;
+    }
+} 
+    
+
+//modal
+.modal {
+    color: black;
+
+    textarea {
+        resize: vertical;
+    }
 }

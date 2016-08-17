@@ -59,7 +59,7 @@
         vm.logout = function () {
             AuthService.logout().then(function () {
                 // console.log('User ' + $rootScope.currentUser);
-                $state.go('user');
+                $state.go('user.posts');
             });
         }
     }]);
