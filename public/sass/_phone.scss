@@ -38,7 +38,6 @@ input {
 
 /* HEADER */
 header {
-
     h1, h2 {
         display: none;
     }
@@ -58,13 +57,20 @@ header {
     background-color: transparent;
     border-color: $bg-color;
 
+    .navbar-brand {
+        color: white;
+        &:hover, &:focus {
+                color: $orange;
+        }
+
+    }
+
     .navbar-toggle, .navbar-toggle:focus, .navbar-toggle:hover {
         @extend .navbar-default;
 
     }
 
     .navbar-nav {
-        
         li a {
             color: white;
 
@@ -84,7 +90,10 @@ header {
 
     .navbar-collapse {
         text-align: center;
-        
+
+        &.in {
+            border-bottom: 1px solid white;   
+        }
     }
 }
 
@@ -126,9 +135,10 @@ header {
 //login form
 #login-container  {
     margin-top: 7%;
-
+    
     #logo-login {
         margin-bottom: 10%;
+        max-width: 200px;
     }
     
 }
@@ -156,4 +166,35 @@ header {
 
 .error {
     color: $error-txt;
+}
+
+//ADMIN side 
+.admin-home {
+    max-width: 960px;
+}
+
+.nav-admin {
+    ul {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    li {
+        display: inline-block;
+        padding: 7px;
+    }
+    a:hover {
+        color: $orange;
+        text-decoration: none;
+    }
+} 
+    
+
+//modal
+.modal {
+    color: black;
+
+    textarea {
+        resize: vertical;
+    }
 }

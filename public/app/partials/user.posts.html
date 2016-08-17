@@ -3,7 +3,7 @@
         <input type="text" ng-model="vm.srch" placeholder="Search" class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4" />
     </div>
     <div class="row clearfix-row">
-        <div ng-repeat="post in vm.posts | orderBy: '-created_at' | filter: vm.srch | limitTo: vm.limit" class="col-md-4 post-box">
+        <div ng-repeat="post in vm.posts | orderBy: '-created_at' | filter: vm.srch | limitTo: vm.limit" class="col-xs-12 col-md-4 post-box">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <span class="pull-right"> {{ post.created_at | dateFormat | date: "shortDate" }}</span>
