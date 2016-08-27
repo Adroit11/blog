@@ -45,20 +45,12 @@ class PostsController extends Controller
     public function store(Request $request)
     { 
         return \Response::json($this->repo->insertPost($request));
-
-        //$post = Post::create($request->only('title', 'text', 'url'));
-        //return response()->json($post, 200);
     }
 
     //PUT/PATCH /posts/:id
     public function update($id, Request $request)
     {
         return \Response::json($this->repo->updatePost($id, $request));
-        // $post = Post::findOrFail($request->id);
-
-        // $post->title = $request->title;
-        // $post->text = $request->text;
-        // $post->url = $request->url;
     }
 
     //DELETE /posts/:id

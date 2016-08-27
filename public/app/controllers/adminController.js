@@ -31,9 +31,6 @@
             });
 
             modalInstance.result.then(function (data) {
-                // console.log(data);
-                // console.log(data.id);
-                //console.log(vm.method);
                 if (vm.method === 'Edit')
                 {
                     PostService.update({ id: data.id }, data);
@@ -52,13 +49,12 @@
                 }
             }, function () {
                 //modal dismissed
-                console.log('dismissed');
+                
             });
         }
 
         vm.logout = function () {
             AuthService.logout().then(function () {
-                // console.log('User ' + $rootScope.currentUser);
                 $state.go('user.posts');
             });
         }

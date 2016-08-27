@@ -1,10 +1,24 @@
-.logo {
-    padding-bottom: 30px;
-    h1, h2 {
-        display: block;
-        text-align: center;
-    }
-    h1 {
-        font-size: 150%;
+.main-header {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .logo {
+        padding: 30px;
+        h1, h2 {
+            display: table;
+            padding: 10px;
+            text-align: center;
+            color: black;
+        }
+        h1 {
+            margin: 0 auto;
+            font-size: 80px;
+        }
+
+        h2 {
+            font-size: 200%;
+        }
     }
 }

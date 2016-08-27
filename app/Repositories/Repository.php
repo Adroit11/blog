@@ -29,6 +29,7 @@ class Repository
 		$post->title = $data->title;
 		$post->text = $data->text;
 		$post->url = $data->url;
+		$post->genre = $data->genre;
 		
 		return $user->posts()->save($post);
 	}
@@ -51,6 +52,7 @@ class Repository
 		$post->title = $data->title;
 		$post->text = $data->text;
 		$post->url = $data->url;
+		$post->genre = $data->genre;
 
 		return $post->save();
 	}

@@ -44,11 +44,25 @@ header {
 
     .logo {
         font-family: $logo_font_family;
+        font-weight: $heavy;
+        z-index: 5;
         // float: left;
     }
-
-    .logo img {
-        width: 150px;
+    
+    .main-header {
+        //background: url('../img/graff.jpg');
+        //background-size: auto;
+        margin-top: 0;
+        
+        
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0.4;
+        }
     }
 }
 
@@ -56,7 +70,8 @@ header {
 .navbar-default {
     background-color: transparent;
     border-color: $bg-color;
-
+    margin-bottom: 0;
+    z-index: 2;
     .navbar-brand {
         color: white;
         &:hover, &:focus {
@@ -90,7 +105,6 @@ header {
 
     .navbar-collapse {
         text-align: center;
-
         &.in {
             border-bottom: 1px solid white;   
         }
