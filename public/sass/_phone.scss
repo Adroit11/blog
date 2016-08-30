@@ -21,7 +21,7 @@ html {-webkit-text-size-adjust: none; }
         background: $theme-primary; /* WebKit/Blink Browsers */
     }
     ::-moz-selection {
-    background: $theme-primary; /* Gecko Browsers */
+        background: $theme-primary; /* Gecko Browsers */
     }
 }
 
@@ -50,12 +50,12 @@ a {
     -ms-user-select: none;       
     user-select: none;
     
-    ::selection {
-        background: $theme-primary; /* WebKit/Blink Browsers */
-    }
-    ::-moz-selection {
-    background: $theme-primary; /* Gecko Browsers */
-    }
+    // ::selection {
+    //     background: $theme-primary; /* WebKit/Blink Browsers */
+    // }
+    // ::-moz-selection {
+    //     background: $theme-primary; /* Gecko Browsers */
+    // }
 }
 
 /* clearfix */
@@ -75,7 +75,7 @@ header {
         background-image: url('../img/cork.png');
         background-size: cover;
         width: 100%;
-        min-height: 250px;
+        min-height: 225px;
         opacity: 0.6;
         z-index: -1;
         content: ' ';
@@ -117,7 +117,7 @@ header {
         // float: left;
         
         
-            vertical-align: middle;
+            
         h1, h2 {
             display: block;
             padding: 10px;
@@ -131,17 +131,11 @@ header {
 
         h2 {
             font-size: 35px;
+            display: none;
         }
     }
 }
-@font-face {
-    font-family: tag-type;
-    src: url(../fonts/tagtype-freefont.ttf);
-}
-@font-face {
-    font-family: MARSNEVENEKSK;
-    src: url(../fonts/MARSNEVENEKSK.otf);
-}
+
 /* NAV */
 .navbar-default {
     @include noselect;

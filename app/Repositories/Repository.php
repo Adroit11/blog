@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\User;
 use App\Post;
+use App\Tag;
 
 class Repository
 {
@@ -11,7 +12,7 @@ class Repository
 	public function allPosts()
 	{
 		//return Post::all();
-		return Post::with('user')->get();
+		return Post::with('user', 'tags')->get();
 	}
 
 	//get post by ID
@@ -29,9 +30,23 @@ class Repository
 		$post->title = $data->title;
 		$post->text = $data->text;
 		$post->url = $data->url;
-		$post->genre = $data->genre;
+
+		$user->posts()->save($post);
 		
-		return $user->posts()->save($post);
+		//split tags
+	    $tags = explode(',', $data->tags);
+		for($x = 0; $x < count($tags); $x++)
+		{
+			$trim = trim($tags[$x]);
+			//check if tag exists
+			$tag = Tag::firstOrCreate(['tagname' => $trim]);
+
+			//update the intermediate (post_tag) table
+			if ($tag->wasRecentlyCreated)
+				$post->tags()->attach($tag->id);
+		}
+		return true;
+		
 	}
 
 	//get posts by userID
@@ -52,7 +67,7 @@ class Repository
 		$post->title = $data->title;
 		$post->text = $data->text;
 		$post->url = $data->url;
-		$post->genre = $data->genre;
+
 
 		return $post->save();
 	}

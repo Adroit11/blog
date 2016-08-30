@@ -16,6 +16,10 @@ class Post extends Model
         return $this->belongsTo('App\User', 'author');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

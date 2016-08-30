@@ -3,7 +3,7 @@
 
     app.controller('adminController', ['posts', '$uibModal', 'AuthService', 'PostService', '$rootScope', '$state', function (posts, $uibModal, AuthService, PostService, $rootScope, $state) {
         var vm = this;
-        // console.log(posts);
+         console.log(posts);
         vm.posts = posts;
         //console.log($rootScope.currentUser);
         //if token has expired, do not allow them to view admin state.

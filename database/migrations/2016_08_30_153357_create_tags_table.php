@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPostGenre extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddPostGenre extends Migration
     public function up()
     {
         //
-        Schema::table('posts', function ($table) {
-            $table->string('genre')->nullable();
+        Schema::create('tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('TagName');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ class AddPostGenre extends Migration
     public function down()
     {
         //
-        Schema::table('posts', function ($table) {
-            $table->dropColumn('genre');
-        });
+        Schema::drop('tags');
     }
 }

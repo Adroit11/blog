@@ -23,13 +23,13 @@
             //satellizer's $auth service to login
             return $auth.login(credentials).then(function (response) {
                 //if login successful, get user data
-                //console.log('success');
+                //console.log(response);
                 return UserService.getUserData();
             }, function (error) {
                 throw error.data;
             }).then(function (response) {
                 //returned user data
-
+                
                 //set user's stringified data in local storage
                 var user = JSON.stringify(response.data.user);
                 localStorage.setItem('user', user);
