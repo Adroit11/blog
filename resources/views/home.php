@@ -37,5 +37,8 @@
         <script src="<?= asset('app/controllers/postsController.js') ?>"></script>
 		<script src="<?= asset('app/controllers/adminController.js') ?>"></script>
 
+		<!-- misc -->
+		<script src="<?= asset('js/scripts.js') ?>"></script>
+
 	</body>
 </html>

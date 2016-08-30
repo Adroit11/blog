@@ -1,6 +1,6 @@
 /* ---- SCSS FOR COLORS ----- */
 $brown: #a47027;
-$red: #FC1300;
+
 $ltorange: #ED4E0C;
 $orange: #E82C0C;
 $blue: #394585; 
@@ -9,21 +9,18 @@ $rlydkgrey: #404352;
 $ltrgrey: #BBBED2;
 $ltgrey: #777985;
 
+$theme-primary: #0CE300;
 
-$text-color: $ltrgrey;
+$text-color: lighten($ltrgrey, 50%);
 $menu_text: $orange;
-$link-hover: $red;
+$link-hover: $theme-primary;
 $menu-active: $rlydkgrey;
 
-$link_colour: $brown;
-$h1_colour: $brown;
-$h2_colour: $orange;
-$h3_colour: $blue;
 
-$bg-color: $dkgrey;
-$error-txt: $red;
-$btn-bg: $ltorange;
-$btn-bg-hover: $orange;
+$bg-color: darken($dkgrey, 10%);
+$error-txt: $orange;
+$btn-bg: $theme-primary;
+$btn-bg-hover: darken($theme-primary, 5%);
 
 /* ---- SCSS FOR FONT FAMILY ----- */
 $logo_font_family: 'Lato', sans-serif;
@@ -31,5 +28,4 @@ $default_font_family: 'Harmattan', sans-serif;
 $normal: 400;
 $heavy: 900;
 
-/* ---- SCSS GUTTER ----- */
 $gutter: 2%;

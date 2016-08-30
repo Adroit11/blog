@@ -29,7 +29,7 @@ app.config(['API_URL', '$stateProvider', '$urlRouterProvider', '$authProvider', 
 
                 angular.forEach(rejectionReasons, function(value, key){
                     //redirect to login state if rejection reason encountered
-                    if(rejection.data.error === value) {
+                    if( rejection.data != null && rejection.data.error === value) {
                         localStorage.removeItem('user');
                         $state.go('auth');
                     }
