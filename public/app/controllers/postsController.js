@@ -5,8 +5,11 @@
 		vm.message = "Posts";
 		vm.limit = 3; //posts per page
 		vm.posts = posts;
+		vm.tags = [];
 
 		//console.log(posts);
+
+		//parse URLs and build tags list
 		posts.forEach(parseURL);
 
 		vm.loadMore = function () {
@@ -14,7 +17,24 @@
 			vm.limit = total > vm.posts.length ? vm.posts.length : total;
 		}
 
+		vm.filter = function (tag) {
+			vm.srch = tag;
+		}
+
+		vm.clear = function () {
+			vm.srch = '';
+		}
+
 		function parseURL(item) {
+			//build tags list
+			for ( var x = 0; x < item.tags.length; x++)
+			{
+				var theTag = item.tags[x].TagName;
+				if(vm.tags.indexOf(theTag) == -1)
+					vm.tags.push(theTag);
+			}
+
+			//parse URL
 			var url = item.url;
 			var regYT = /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/;
 			var regSC = /^https?:\/\/(soundcloud\.com|snd\.sc)\/(.*)$/;

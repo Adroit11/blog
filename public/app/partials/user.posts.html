@@ -1,22 +1,30 @@
 <div class="container">
-    <div class="row search">
-        <input type="text" ng-model="vm.srch" placeholder="Search ..." class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4" />
+    <div class="row search col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+        <input type="text" ng-model="vm.srch" placeholder="Search ..." class="col-xs-12 form-control" />
+        <span id="searchclear" class="fa fa-remove" ng-show="vm.srch" ng-click="vm.clear()"></span>
     </div>
-    <div class="row clearfix-row">
-        <div ng-repeat="post in vm.posts | orderBy: '-created_at' | filter: vm.srch | limitTo: vm.limit" class="col-xs-12 col-md-4 post-box">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="pull-right"> {{ post.created_at | dateFormat | date: "shortDate" }}</span>
-                    <h3> {{ post.title }} </h3>
-                </div>
-                <div class="panel-body">
-                    <p> {{ post.text }} </p>
-                    <p class="author"> {{ post.user.name }} </p>
-                    <iframe width="100%" ng-src="{{ post.embedURL | trustAsResourceUrl }}"></iframe>
+    <div class="col-xs-12 col-md-10">
+        <div class="row clearfix-row">
+            <div ng-repeat="post in vm.posts | orderBy: '-created_at' | filter: vm.srch | limitTo: vm.limit" class="col-xs-12 col-md-6 post-box">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="pull-right">{{ post.created_at | dateFormat | date: "shortDate" }}</span>
+                        <h3>{{ post.title }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ post.text }}</p>
+                        <p class="author">{{ post.user.name }}</p>
+                        <ul class="list-inline"><li ng-repeat="tag in post.tags" class="post-tag" ng-click="vm.filter(tag.TagName)">{{ tag.TagName }}</li></ul>
+                        <iframe width="100%" ng-src="{{ post.embedURL | trustAsResourceUrl }}"></iframe>
+                    </div>
                 </div>
             </div>
+            <div class="clearfix visible-md"></div>
         </div>
-        <div class="clearfix visible-md"></div>
+    </div>
+    <div class="col-xs-12 col-md-2">
+        <span>Tags:</span>
+        <ul class="list-inline"><li ng-repeat="tag in vm.tags" class="post-tag" ng-click="vm.filter(tag)">{{ tag }}</li></ul>
     </div>
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4 load-more" ng-click="vm.loadMore()">

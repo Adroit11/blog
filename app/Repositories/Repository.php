@@ -37,13 +37,12 @@ class Repository
 	    $tags = explode(',', $data->tags);
 		for($x = 0; $x < count($tags); $x++)
 		{
-			$trim = trim($tags[$x]);
+			$trim = trim(strtolower($tags[$x]));
 			//check if tag exists
 			$tag = Tag::firstOrCreate(['tagname' => $trim]);
 
-			//update the intermediate (post_tag) table
-			if ($tag->wasRecentlyCreated)
-				$post->tags()->attach($tag->id);
+			//update the pivot (post_tag) table
+			$post->tags()->attach($tag->id);
 		}
 		return true;
 		
@@ -68,13 +67,29 @@ class Repository
 		$post->text = $data->text;
 		$post->url = $data->url;
 
+		$post->save();
 
-		return $post->save();
+		//split tags
+	    $tags = explode(',', $data->tags);
+		for($x = 0; $x < count($tags); $x++)
+		{
+			$trim = trim(strtolower($tags[$x]));
+			//check if tag exists
+			$tag = Tag::firstOrCreate(['tagname' => $trim]);
+
+			//update the pivot (post_tag) table
+			$post->tags()->attach($tag->id);
+		}
+		return true;
 	}
 
 	//delete post
 	public function deletePost($id)
 	{
-		return Post::destroy($id);
+		$post = Post::find($id);
+		$post->tags()->detach();
+		$post->delete();
+
+		return true;
 	}
 }

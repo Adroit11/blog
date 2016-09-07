@@ -78,7 +78,8 @@ input {
   color: black; }
 
 a {
-  color: white; }
+  color: white;
+  cursor: pointer; }
   a:focus, a:hover {
     color: #0CE300; }
 
@@ -172,13 +173,31 @@ header .logo {
     color: white; }
   .navbar-default .navbar-collapse {
     text-align: center;
-    border: none; }
+    border: none;
+    position: absolute;
+    width: 100%; }
+
+.nav-admin {
+  height: 50px; }
+  .nav-admin a {
+    font-size: 18px; }
 
 /* MISC */
 .search {
   margin-bottom: 25px; }
-  .search input:focus {
-    outline: none; }
+  .search input {
+    color: black; }
+    .search input:focus {
+      outline: none; }
+  .search span {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 5px;
+    height: 14px;
+    margin: auto;
+    cursor: pointer;
+    color: #1b1b1e; }
 
 .panel-default {
   border: none; }
@@ -199,6 +218,14 @@ header .logo {
 
 .author {
   font-style: italic; }
+
+.post-tag {
+  border: 1px solid white;
+  margin: 1%;
+  padding: 5px 5px;
+  background-color: #333439; }
+  .post-tag:first-child {
+    margin-left: 0; }
 
 .load-more {
   -webkit-touch-callout: none;
@@ -268,4 +295,7 @@ header .logo {
       font-size: 90px; }
     header .main-header .logo h2 {
       font-size: 35px;
-      display: block; } }
+      display: block; }
+
+  .navbar-default .navbar-collapse {
+    position: relative; } }

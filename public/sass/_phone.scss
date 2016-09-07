@@ -39,6 +39,7 @@ input {
 
 a {
     color: $text-color;
+    cursor: pointer;
     &:focus, &:hover { color: $theme-primary; }
 }
 
@@ -50,12 +51,6 @@ a {
     -ms-user-select: none;       
     user-select: none;
     
-    // ::selection {
-    //     background: $theme-primary; /* WebKit/Blink Browsers */
-    // }
-    // ::-moz-selection {
-    //     background: $theme-primary; /* Gecko Browsers */
-    // }
 }
 
 /* clearfix */
@@ -159,7 +154,7 @@ header {
         }
 
         .fa-bars { 
-            //background-color: $theme-primary;
+            
             &:hover, &:focus {
                 color: $theme-primary;
             }
@@ -187,9 +182,18 @@ header {
 
     .navbar-collapse {
         text-align: center;
+        border: none;
+        position: absolute;
+        width: 100%;        
+    }
         
-            border: none;   
-        
+}
+
+.nav-admin {
+    height: 50px;
+    a {
+        // cursor: pointer;
+        font-size: 18px;
     }
 }
 
@@ -198,13 +202,23 @@ header {
     //margin-top: 150px;
     margin-bottom: 25px;
     input {
-        
+        color: black;
         &:focus {
             outline: none;
             
         }
     }
     
+    span {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        bottom: 5px;
+        height: 14px;
+        margin: auto;
+        cursor: pointer;
+        color: $bg-color;
+    }
 }
 
 //Posts panels
@@ -227,6 +241,17 @@ header {
 
 .author {
     font-style: italic;
+}
+
+.post-tag {
+    border: 1px solid white;
+    margin: 1%;
+    padding: 5px 5px;
+    // cursor: pointer;
+    background-color: lighten($bg-color, 10%);
+    &:first-child {
+        margin-left: 0;
+    }
 }
 
 .load-more {
